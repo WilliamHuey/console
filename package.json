@@ -3,11 +3,12 @@
   "version": "0.0.1",
   "main": "./index.js",
   "dependencies": {
-    "tower-server": "*"
+    "tower-server": "*",
+    "commander": "~1.1.1",
+    "fibers": "~1.0.0"
   },
   "devDependencies": {
-    "mocha": "~1.8.1",
-    "chai": "~1.4.2"
+    "mocha": "~1.8.1"
   },
   "scripts": {
     "test": "mocha"
