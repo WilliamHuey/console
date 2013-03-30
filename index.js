@@ -16,12 +16,6 @@ module.exports = function(options){
   options.env = options.env || 'development';
 
   // Tower.ModelCursor.include Tower.ModelCursorSync if @program.synchronous
-  // app = Tower.Application.instance()
-  // app.isConsole = true
-  // app.initialize()
-  // app.stack()
-  // app.watch() if Tower.watch
-  // app.initializeConsoleHooks()
 
   function evaluate(cmd, context, filename, fn) {
     Fiber(function(){
