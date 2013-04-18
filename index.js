@@ -44,6 +44,10 @@ function console(options){
   });
 }
 
+/**
+ * Evaluate stdin synchronously.
+ */
+
 function evaluate(cmd, ctx, filename, fn) {
   Fiber(function(){
     try {
