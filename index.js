@@ -12,15 +12,13 @@ var repl = require('repl')
  */
 
 module.exports = function(options){
-  options = options || {};
-  options.env = options.env || 'development';
+  options || (options = {});
+  options.env || (options.env = 'development');
 
-  // Tower.ModelCursor.include Tower.ModelCursorSync if @program.synchronous
-
-  function evaluate(cmd, context, filename, fn) {
+  function evaluate(cmd, ctx, filename, fn) {
     Fiber(function(){
       try {
-        fn(null, eval.call(context, cmd));
+        fn(null, eval.call(ctx, cmd));
       } catch (err) {
         fn(err);
       }
@@ -29,21 +27,27 @@ module.exports = function(options){
 
   var context = repl.start({
       prompt: 'tower> '
-    , context: this
+      // XXX: use http://nodejs.org/api/vm.html
+    , useGlobal: true
     , eval: evaluate
   }).context;
 
-  //context.Tower  = Tower;
   context.Future = Future;
   context.Fiber  = Fiber;
 
   context.reload = function(){
-    // context[Tower.namespace()] = app;
+    // XXX: replace this with just `require('tower')` soon.
+    context.model = require('tower-model');
+    context.query = require('tower-query');
+    context.adapter = require('tower-adapter');
+    context.text = require('tower-inflector');
   };
 
   context.exit = function(){
     process.exit(0);
   };
 
-  process.nextTick(context.reload);
+  process.nextTick(function(){
+    context.reload();
+  });
 }

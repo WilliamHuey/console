@@ -4,13 +4,10 @@
   "main": "./index.js",
   "dependencies": {
     "tower-server": "*",
-    "commander": "~1.1.1",
-    "fibers": "~1.0.0"
-  },
-  "devDependencies": {
-    "mocha": "~1.8.1"
-  },
-  "scripts": {
-    "test": "mocha"
+    "fibers": "~1.0.0",
+    "tower-model": "*",
+    "tower-query": "*",
+    "tower-adapter": "*",
+    "tower-inflector": "*"
   }
 }
