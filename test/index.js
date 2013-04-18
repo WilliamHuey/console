@@ -1,8 +1,8 @@
-var tconsole = require('..')
-  , assert = require('chai').assert;
+var repl = require('..')
+  , assert = require('assert');
 
 describe('console', function(){
   it('should start the console', function(){
-    tconsole();
+    repl();
   });
 });
