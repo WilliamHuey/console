@@ -40,6 +40,7 @@ function console(options){
     context.query = require('tower-query');
     context.adapter = require('tower-adapter');
     context.text = require('tower-inflector');
+    context.route = require('tower-route');
   });
 }
 

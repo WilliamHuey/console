@@ -8,6 +8,7 @@
     "tower-model": "*",
     "tower-query": "*",
     "tower-adapter": "*",
-    "tower-inflector": "*"
+    "tower-inflector": "*",
+    "tower-route": "*"
   }
 }
