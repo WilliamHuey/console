@@ -32,22 +32,17 @@ module.exports = function(options){
     , eval: evaluate
   }).context;
 
-  context.Future = Future;
-  context.Fiber  = Fiber;
-
-  context.reload = function(){
-    // XXX: replace this with just `require('tower')` soon.
-    context.model = require('tower-model');
-    context.query = require('tower-query');
-    context.adapter = require('tower-adapter');
-    context.text = require('tower-inflector');
-  };
-
   context.exit = function(){
     process.exit(0);
   };
 
   process.nextTick(function(){
-    context.reload();
+    context.Future = Future;
+    context.Fiber  = Fiber;
+    // XXX: replace this with just `require('tower')` soon.
+    context.model = require('tower-model');
+    context.query = require('tower-query');
+    context.adapter = require('tower-adapter');
+    context.text = require('tower-inflector');
   });
 }
