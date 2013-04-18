@@ -21,16 +21,6 @@ function console(options){
   options || (options = {});
   options.env || (options.env = 'development');
 
-  function evaluate(cmd, ctx, filename, fn) {
-    Fiber(function(){
-      try {
-        fn(null, eval.call(ctx, cmd));
-      } catch (err) {
-        fn(err);
-      }
-    }).run();
-  }
-
   var context = repl.start({
       prompt: 'tower> '
       // XXX: use http://nodejs.org/api/vm.html
@@ -51,4 +41,14 @@ function console(options){
     context.adapter = require('tower-adapter');
     context.text = require('tower-inflector');
   });
+}
+
+function evaluate(cmd, ctx, filename, fn) {
+  Fiber(function(){
+    try {
+      fn(null, eval.call(ctx, cmd));
+    } catch (err) {
+      fn(err);
+    }
+  }).run();
 }
