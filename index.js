@@ -8,16 +8,16 @@ var repl = require('repl')
   , Future = require('fibers/future');
 
 /**
- * Expose `console`.
+ * Expose `shell`.
  */
 
-module.exports = console;
+module.exports = shell;
 
 /**
  * Start a new interactive repl.
  */
 
-function console(options){
+function shell(options){
   options || (options = {});
   options.env || (options.env = 'development');
 
